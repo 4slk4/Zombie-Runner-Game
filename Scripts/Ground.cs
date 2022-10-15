@@ -19,7 +19,8 @@ public class Ground : MonoBehaviour
 
     bool didGenerateGround = false;
 
-    public Obstacle boxTemplate;
+    public Obstacle boxTemplate;public int health = 1;
+    public GameObject deathEffect;
     
     
     private void Awake()
@@ -124,7 +125,6 @@ public class Ground : MonoBehaviour
         Ground goGround = go.GetComponent<Ground>();
         goGround.groundHeight = go.transform.position.y + (goCollider.size.y / 2);
 
-
         /* GENERATE THE ZOMBIES */
         int obstacleNum = Random.Range(1, 2);
         for (int i=0; i<obstacleNum; i++)
@@ -139,4 +139,23 @@ public class Ground : MonoBehaviour
             box.transform.position = boxPos;
         }
     }
+
+    /*public void TakeDamage(int damage)
+    {
+        health -= damage;
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Instantiate(deathEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }*/
+
+
+   
 }

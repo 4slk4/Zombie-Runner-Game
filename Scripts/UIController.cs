@@ -10,10 +10,13 @@ using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     Player player;
-    Text distanceText;
+    public Text distanceText;
+    public Text highScoreText;
+    public float highScore;
+    private float score;
 
     GameObject results;
-    Text finalDistanceText;
+    public Text finalDistanceText;
 
     //Appear the first frame starts
     private void Awake()
@@ -29,7 +32,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        highScore = PlayerPrefs.GetFloat("Highscore");
     }
 
     // Update is called once per frame
@@ -42,6 +45,11 @@ public class UIController : MonoBehaviour
         {
             results.SetActive(true);
             finalDistanceText.text = distance + " m";
+        }
+        highScoreText.text = highScore.ToString();
+        if(distance > highScore)
+        {
+            PlayerPrefs.SetFloat("Highscore", Mathf.FloorToInt(distance));
         }
     }
 
