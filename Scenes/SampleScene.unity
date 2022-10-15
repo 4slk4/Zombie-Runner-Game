@@ -4889,7 +4889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -748, y: 460}
+  m_AnchoredPosition: {x: -520, y: 313.00006}
   m_SizeDelta: {x: 340.38, y: 84.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904516625
@@ -6159,7 +6159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1493022933
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6847,7 +6847,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540, y: 449}
+  m_AnchoredPosition: {x: -312, y: 302}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774742048
@@ -7571,6 +7571,8 @@ MonoBehaviour:
   groundRight: 0
   screenRight: 0
   boxTemplate: {fileID: 289230252885036059, guid: bd7930b9214e04e46aa97759770515ac, type: 3}
+  health: 1
+  deathEffect: {fileID: 0}
 --- !u!61 &1969178106
 BoxCollider2D:
   m_ObjectHideFlags: 0
