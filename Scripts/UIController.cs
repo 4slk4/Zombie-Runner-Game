@@ -25,7 +25,9 @@ public class UIController : MonoBehaviour
         distanceText =  GameObject.Find("DistanceText").GetComponent<Text>();
 
         results = GameObject.Find("Results");
+
         finalDistanceText = GameObject.Find("FinalDistanceText").GetComponent<Text>();
+
         results.SetActive(false);
     }
     
