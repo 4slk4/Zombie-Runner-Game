@@ -587,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &311600282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8314,7 +8314,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1969178107}
   - component: {fileID: 1969178106}
-  - component: {fileID: 1969178105}
   - component: {fileID: 1969178108}
   m_Layer: 6
   m_Name: Ground
@@ -8323,24 +8322,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1969178105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969178104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de82149d3c961564f8bcbb89168e6c62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundHeight: 0
-  groundRight: 0
-  screenRight: 0
-  boxTemplate: {fileID: 289230252885036059, guid: bd7930b9214e04e46aa97759770515ac, type: 3}
-  health: 1
-  deathEffect: {fileID: 0}
 --- !u!61 &1969178106
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8397,12 +8378,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969178104}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d71068c62623d42a298112a4158eba, type: 3}
+  m_Script: {fileID: 11500000, guid: de82149d3c961564f8bcbb89168e6c62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 1
+  groundHeight: 0
+  groundRight: 0
+  screenRight: 0
+  boxTemplate: {fileID: 289230252885036059, guid: bd7930b9214e04e46aa97759770515ac, type: 3}
+  boxTemplate2: {fileID: 2397812022197003509, guid: 5aca2a404c1483d4c83f770bc1c20155, type: 3}
+  boxTemplate3: {fileID: 1692889166466388914, guid: d62582a46da136843a0996c6395ce2fe, type: 3}
+  boxTemplate4: {fileID: 2397812022197003509, guid: 5aca2a404c1483d4c83f770bc1c20155, type: 3}
+  health: 1
+  deathEffect: {fileID: 0}
 --- !u!1 &1972649200
 GameObject:
   m_ObjectHideFlags: 0
