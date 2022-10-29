@@ -39,4 +39,14 @@ public class Obstacle : MonoBehaviour
         //Update the position
         transform.position = pos;
     }
+
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Obstacle obstacle = hitInfo.GetComponent<Obstacle>();
+        if (obstacle != null)
+        {
+            //obstacle.TakeDamage(damage);
+            Destroy(obstacle.gameObject);
+        }
+    }
 }
