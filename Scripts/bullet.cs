@@ -35,4 +35,17 @@ public class bullet : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D hitInfo)
+    {
+        Obstacle obstacle = hitInfo.GetComponent<Obstacle>();
+        if (obstacle != null)
+        {
+            //obstacle.TakeDamage(damage);
+            Destroy(obstacle.gameObject);
+            Destroy(gameObject);
+        }
+        Destroy(gameObject);
+    }
+
 }
