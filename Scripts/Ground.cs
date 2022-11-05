@@ -19,7 +19,13 @@ public class Ground : MonoBehaviour
 
     bool didGenerateGround = false;
 
-    public Obstacle boxTemplate;public int health = 1;
+    public Obstacle boxTemplate;
+    public Obstacle boxTemplate2;
+    public Obstacle boxTemplate3;
+    public Obstacle boxTemplate4;
+    
+    
+    public int health = 1;
     public GameObject deathEffect;
     
     
@@ -100,9 +106,9 @@ public class Ground : MonoBehaviour
         // Set the y postion of the ground object and make sure it's not too high for player to jump
         pos.y = actualY - goCollider.size.y / 2;
         // Make sure it's not too high
-        if (pos.y > -7f) // 7 is the gap between the object and the ceiling of the screen, I think 7 is enough for the player to jump
+        if (pos.y > -6f) // 6f is the gap between the object and the ceiling of the screen
         {
-            pos.y = -7f;
+            pos.y = -6f;
         }
 
         /* GENERATE RANDOM GAP BETWEEN GROUNDS */
@@ -126,17 +132,38 @@ public class Ground : MonoBehaviour
         goGround.groundHeight = go.transform.position.y + (goCollider.size.y / 2);
 
         /* GENERATE THE ZOMBIES */
+        //Generate random position of the zombie
+        float y = goGround.groundHeight;
+        float halfWidth = goCollider.size.x / 2 - 1;
+        float left = go.transform.position.x - halfWidth;
+        float right = go.transform.position.x + halfWidth;
+        float x = Random.Range(left, right);
+        
+        //Create zombie
         int obstacleNum = Random.Range(1, 2);
-        for (int i=0; i<obstacleNum; i++)
+        int selectZombie = Random.Range(0,4);
+        for (int i=0; i < obstacleNum; i++)
         {
-            GameObject box = Instantiate(boxTemplate.gameObject);
-            float y = goGround.groundHeight;
-            float halfWidth = goCollider.size.x / 2 - 1;
-            float left = go.transform.position.x - halfWidth;
-            float right = go.transform.position.x + halfWidth;
-            float x = Random.Range(left, right);
-            Vector2 boxPos = new Vector2(x, y);
-            box.transform.position = boxPos;
+            if (selectZombie == 0) {
+                GameObject box = Instantiate(boxTemplate.gameObject);
+                Vector2 boxPos = new Vector2(x, y);
+                box.transform.position = boxPos;
+            }
+            if (selectZombie == 1) {
+                GameObject box = Instantiate(boxTemplate2.gameObject);
+                Vector2 boxPos = new Vector2(x, y);
+                box.transform.position = boxPos;
+            }            
+            if (selectZombie == 2) {
+                GameObject box = Instantiate(boxTemplate3.gameObject);
+                Vector2 boxPos = new Vector2(x, y);
+                box.transform.position = boxPos;
+            }
+            if (selectZombie == 3) {
+                GameObject box = Instantiate(boxTemplate4.gameObject);
+                Vector2 boxPos = new Vector2(x, y);
+                box.transform.position = boxPos;
+            }            
         }
     }
 
