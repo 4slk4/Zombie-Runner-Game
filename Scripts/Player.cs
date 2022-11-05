@@ -1,6 +1,6 @@
 /*
     THIS SCRIPT IS ALL ABOUT THE PLAYER MECHANISM
-    INCLUDING: JUMPING, COLLIDE WITH GROUND
+    INCLUDING: JUMPING, COLLIDE WITH GROUND AND ZOMBIE
  */
 
 using System.Collections;
@@ -10,6 +10,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    public LifeSystem lifeScript;
     public float gravity;
     public Vector2 velocity;
     public float maxAcceleration = 10;
@@ -99,7 +100,7 @@ public class Player : MonoBehaviour
                 velocity.y += gravity * Time.fixedDeltaTime;
             }
 
-            /*GROUND COLLDING MECHANISM*/
+            /*GROUND COLLIDING MECHANISM*/
             // This mechanism uses RayCasting, a function in Unity used to identify interaction between object
             // RayCasting emits a ray, and whenever the ray hits any object, it triggers an action of the object
             // We use RayCasting in here to make the player standing on the platform, and it only works
@@ -201,13 +202,24 @@ public class Player : MonoBehaviour
         transform.position = pos;
     }
 
-    // Slow down when hitting an obstacle
+    // Hitting zombie mechanism
     void hitObstacle(Obstacle obstacle)
-    {
-        velocity.x = 0;
-        isDead = true;
-        //Destroy(obstacle.gameObject);
-        //velocity.x *= 0.7f;
+    {        
+        int life = lifeScript.life;
+        
+        if (life > 0)
+        {
+            lifeScript.TakeDamage(1);
+            velocity.x *= 0.7f; //Slow down when hit a zombie
+            Destroy(obstacle.gameObject); //Kill zombie
+        }
+        else
+        {
+            velocity.x = 0;
+            isDead = true;
+        }        
     }
+
+    
 
 }
