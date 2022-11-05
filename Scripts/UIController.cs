@@ -23,8 +23,7 @@ public class UIController : MonoBehaviour
     {
         player = GameObject.Find("Player").GetComponent<Player>();
         distanceText =  GameObject.Find("DistanceText").GetComponent<Text>();
-
-        results = GameObject.Find("Results");
+        results = GameObject.Find("Results");                
         finalDistanceText = GameObject.Find("FinalDistanceText").GetComponent<Text>();
         results.SetActive(false);
     }
@@ -32,6 +31,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         highScore = PlayerPrefs.GetFloat("Highscore");
     }
 
@@ -44,7 +44,10 @@ public class UIController : MonoBehaviour
         if (player.isDead)
         {
             results.SetActive(true);
-            finalDistanceText.text = distance + " m";
+            if (finalDistanceText != null)
+            {         
+                finalDistanceText.text = distance + " m";
+            }
         }
         highScoreText.text = highScore.ToString();
         if(distance > highScore)
