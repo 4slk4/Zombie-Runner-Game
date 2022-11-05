@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         callGamePause = PauseMenu.gameIsPaused;
-        if (Input.GetButtonDown("Fire1") && !callGamePause)
+        if (Input.GetKeyUp(KeyCode.F) && !callGamePause)
         {
             Shoot();
         }
