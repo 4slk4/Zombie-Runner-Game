@@ -133,17 +133,17 @@ public class Ground : MonoBehaviour
 
         /* GENERATE THE ZOMBIES */
         //Generate random position of the zombie
-        float y = goGround.groundHeight;
-        float halfWidth = goCollider.size.x / 2 - 1;
-        float left = go.transform.position.x - halfWidth;
-        float right = go.transform.position.x + halfWidth;
-        float x = Random.Range(left, right);
         
         //Create zombie
-        int obstacleNum = Random.Range(1, 2);
-        int selectZombie = Random.Range(0,4);
+        int obstacleNum = Random.Range(1,4);
         for (int i=0; i < obstacleNum; i++)
         {
+            float y = goGround.groundHeight;
+            float halfWidth = goCollider.size.x / 2 - 1;
+            float left = go.transform.position.x - halfWidth;
+            float right = go.transform.position.x + halfWidth;
+            float x = Random.Range(left, right);
+            int selectZombie = Random.Range(0,4);
             if (selectZombie == 0) {
                 GameObject box = Instantiate(boxTemplate.gameObject);
                 Vector2 boxPos = new Vector2(x, y);
