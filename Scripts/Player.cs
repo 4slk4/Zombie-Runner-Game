@@ -10,7 +10,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public LifeSystem script;
+    public LifeSystem lifeScript;
     public float gravity;
     public Vector2 velocity;
     public float maxAcceleration = 10;
@@ -205,11 +205,11 @@ public class Player : MonoBehaviour
     // Hitting zombie mechanism
     void hitObstacle(Obstacle obstacle)
     {        
-        int life = script.life;
+        int life = lifeScript.life;
         
         if (life > 0)
         {
-            script.TakeDamage(1);
+            lifeScript.TakeDamage(1);
             velocity.x *= 0.7f; //Slow down when hit a zombie
             Destroy(obstacle.gameObject); //Kill zombie
         }
@@ -219,5 +219,7 @@ public class Player : MonoBehaviour
             isDead = true;
         }        
     }
+
+    
 
 }
