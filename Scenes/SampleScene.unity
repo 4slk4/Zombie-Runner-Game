@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 268015681}
   m_Layer: 5
   m_Name: Heart2
-  m_TagString: Untagged
+  m_TagString: Heart2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4961,7 +4961,7 @@ GameObject:
   - component: {fileID: 867791641}
   m_Layer: 5
   m_Name: Heart3
-  m_TagString: Untagged
+  m_TagString: Heart3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6693,11 +6693,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a2f45daa8c26f40bb578495fc765c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeScript: {fileID: 0}
   gravity: -400
   velocity: {x: 0, y: 0}
-  maxAcceleration: 5
-  maxXVelocity: 60
+  maxAcceleration: 10
+  maxXVelocity: 80
   distance: 0
   acceleration: 1
   jumpVelocity: 80
@@ -6709,12 +6708,17 @@ MonoBehaviour:
   holdJumpTimer: 0
   jumpGroundThreshold: 1
   isDead: 0
+  isPowerUp: 0
+  powerupTimer: 0
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  powerupLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &1479026489
 Transform:
   m_ObjectHideFlags: 0
@@ -8366,7 +8370,7 @@ GameObject:
   - component: {fileID: 1902180128}
   m_Layer: 5
   m_Name: Heart1
-  m_TagString: Untagged
+  m_TagString: Heart1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8636,6 +8640,7 @@ MonoBehaviour:
   groundHeight: 0
   groundRight: 0
   screenRight: 0
+  elixir: {fileID: 5328089043228197914, guid: b5b653499c64ba54b9d8ee74b32ca333, type: 3}
   boxTemplate: {fileID: 289230252885036059, guid: bd7930b9214e04e46aa97759770515ac, type: 3}
   boxTemplate2: {fileID: 2397812022197003509, guid: 5aca2a404c1483d4c83f770bc1c20155, type: 3}
   boxTemplate3: {fileID: 1692889166466388914, guid: d62582a46da136843a0996c6395ce2fe, type: 3}
