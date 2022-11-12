@@ -9,6 +9,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private AudioSource jumpSound;
 
     public LifeSystem lifeScript;
     public float gravity;
@@ -49,6 +50,7 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                jumpSound.Play();
                 isGrounded = false;
                 velocity.y = jumpVelocity;
                 isHoldingJump = true;
