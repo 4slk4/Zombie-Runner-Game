@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
             if (powerupTimer >= 1f)
             {
                 isPowerUp = false;
-                velocity.x = 20;
+                velocity.x = 40;
                 maxXVelocity = 60;
             }
             else

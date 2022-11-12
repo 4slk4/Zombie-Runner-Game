@@ -118,7 +118,7 @@ public class Ground : MonoBehaviour
         float t2 = Mathf.Sqrt((2.0f * (maxY - actualY) / -player.gravity));
         float totalTime = t1 + t2;
         float maxX = totalTime * player.velocity.x;
-        maxX *= 0.2f; //Make it a little easy for the player
+        maxX *= 0.35f; //Make it a little easy for the player
         maxX += groundRight;
         float minX = screenRight + 5;
         float actualX = Random.Range(minX, maxX);
@@ -136,7 +136,7 @@ public class Ground : MonoBehaviour
         //Generate random position of the zombie
         
         //Create zombie
-        int obstacleNum = Random.Range(1,4);
+        int obstacleNum = Random.Range(1,3);
         for (int i=0; i < obstacleNum; i++)
         {
             float y = goGround.groundHeight;
