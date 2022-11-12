@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public bool callGamePause;
+
+    [SerializeField] private AudioSource gunSoundEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class Weapon : MonoBehaviour
         callGamePause = PauseMenu.gameIsPaused;
         if (Input.GetKeyUp(KeyCode.F) && !callGamePause)
         {
+            gunSoundEffect.Play();
             Shoot();
         }
     }
