@@ -1,6 +1,6 @@
 /*
     THIS SCRIPT IS ALL ABOUT THE PLAYER MECHANISM
-    INCLUDING: JUMPING, COLLIDE WITH GROUND AND ZOMBIE
+    INCLUDING: JUMPING, COLLIDE WITH GROUND AND ZOMBIES
  */
 
 using System.Collections;
@@ -11,14 +11,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private AudioSource jumpSound;
 
-    public LifeSystem lifeScript;
+    LifeSystem lifeScript;
     public float gravity;
     public Vector2 velocity;
     public float maxAcceleration = 10;
-    public float maxXVelocity = 100;
+    public float maxXVelocity = 60;
     public float distance = 0;
-    public float acceleration = 10;
-    public float jumpVelocity = 20;
+    public float acceleration = 1;
+    public float jumpVelocity = 80;
     public float groundHeight = 10;
     public bool isGrounded = false;
 
@@ -30,14 +30,18 @@ public class Player : MonoBehaviour
     public float jumpGroundThreshold = 1;
     public bool isDead = false;
 
-    /*Fixing bugs */
+    public bool isPowerUp = false;
+    public float powerupTimer = 0.0f;
+
+    /*Variables for Fixing Bugs */
     public LayerMask groundLayerMask;
     public LayerMask obstacleLayerMask;
+    public LayerMask powerupLayerMask;
 
     // Start is called before the first frame update
     void Start()
     {
-           
+        lifeScript = GameObject.Find("Player").GetComponent<LifeSystem>();
     }
     
     // Update is called once per frame
@@ -66,7 +70,7 @@ public class Player : MonoBehaviour
 
 
     }
-    // FixedUpdate runs constantly
+    /*START FIXEDUPDATE FUNCTION */
     private void FixedUpdate()
     {
         Vector2 pos = transform.position;
@@ -80,6 +84,24 @@ public class Player : MonoBehaviour
         {
             isDead = true;
         }
+
+        //Power Up time limit is 1 seconds
+        if (isPowerUp)
+        {
+            powerupTimer += Time.fixedDeltaTime;
+            if (powerupTimer >= 1f)
+            {
+                isPowerUp = false;
+                velocity.x = 20;
+                maxXVelocity = 60;
+            }
+            else
+            {
+                maxXVelocity = 84;
+                velocity.x = 84;
+            }
+        }
+
 
         //If the player is floating in the air
         if (!isGrounded)
@@ -175,8 +197,11 @@ public class Player : MonoBehaviour
             // Drawing a yellow line for debugging
             Debug.DrawRay(rayOrigin, rayDirection * rayDistance, Color.yellow);
         }
+        /*END GROUND COLLIDING MECHANISM*/
 
-        /* RAYCAST FOR HITTING OBSTACLES */
+
+
+        /* RAYCAST FOR HITTING OBSTACLES */       
         Vector2 obsOrigin = new Vector2(pos.x, pos.y);
         // Hitting from the left
         RaycastHit2D obstHitX = Physics2D.Raycast(obsOrigin, Vector2.right, velocity.x * Time.fixedDeltaTime, obstacleLayerMask);
@@ -185,7 +210,7 @@ public class Player : MonoBehaviour
             Obstacle obstacle = obstHitX.collider.GetComponent<Obstacle>();
             if (obstacle != null)
             {
-                hitObstacle(obstacle);
+                hitObstacle(obstacle, isPowerUp);
             }
         }
         // Hitting from above
@@ -195,31 +220,73 @@ public class Player : MonoBehaviour
             Obstacle obstacle = obstHitY.collider.GetComponent<Obstacle>();
             if (obstacle != null)
             {
-                hitObstacle(obstacle);
+                hitObstacle(obstacle, isPowerUp);
             }
         }
+        /*END RAYCAST FOR HITTING OBSTACLES */ 
+
+        /* RAYCAST FOR HITTING POWERUP */
+        Vector2 puOrigin = new Vector2(pos.x, pos.y);
+        // Hitting from the left
+        RaycastHit2D puHitX = Physics2D.Raycast(puOrigin, Vector2.right, velocity.x * Time.fixedDeltaTime, powerupLayerMask);
+        if (puHitX.collider != null)
+        {
+            PowerUp elixir = puHitX.collider.GetComponent<PowerUp>();
+            if (elixir != null)
+            {
+                hitPowerUp(elixir);
+            }
+        }
+        // Hitting from above
+        RaycastHit2D puHitY = Physics2D.Raycast(puOrigin, Vector2.down, velocity.y * Time.fixedDeltaTime, powerupLayerMask);
+        if (puHitY.collider != null)
+        {
+            PowerUp elixir = puHitY.collider.GetComponent<PowerUp>();
+            if (elixir != null)
+            {
+                hitPowerUp(elixir);
+            }
+        }
+        /*END RAYCAST FOR HITTING POWERUP */
         
         
         // Update the postion
         transform.position = pos;
     }
+    /*END FIXEDUPDATE FUNCTION */
 
-    // Hitting zombie mechanism
-    void hitObstacle(Obstacle obstacle)
+
+    // Hitting obstacle zombie mechanism
+    void hitObstacle(Obstacle obstacle, bool isPowerUp)
     {        
-        int life = lifeScript.life;
-        
-        if (life > 0)
+        if (isPowerUp)
         {
-            lifeScript.TakeDamage(1);
-            velocity.x *= 0.7f; //Slow down when hit a zombie
             Destroy(obstacle.gameObject); //Kill zombie
         }
         else
         {
-            velocity.x = 0;
-            isDead = true;
+            int life = lifeScript.life;
+        
+            if (life > 0)
+            {
+                lifeScript.TakeDamage(1);
+                velocity.x *= 0.7f; //Slow down when hit a zombie
+                Destroy(obstacle.gameObject); //Kill zombie
+            }
+            else
+            {
+                velocity.x = 0;
+                isDead = true;
+            }
         }        
+    }
+
+    //Hitting PowerUp mechanism
+    void hitPowerUp(PowerUp elixir)
+    {
+        Destroy(elixir.gameObject);
+        isPowerUp = true;
+        powerupTimer = 0.0f;
     }
 
     

@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 268015681}
   m_Layer: 5
   m_Name: Heart2
-  m_TagString: Untagged
+  m_TagString: Heart2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4961,7 +4961,7 @@ GameObject:
   - component: {fileID: 867791641}
   m_Layer: 5
   m_Name: Heart3
-  m_TagString: Untagged
+  m_TagString: Heart3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6827,8 +6827,8 @@ MonoBehaviour:
   lifeScript: {fileID: 0}
   gravity: -400
   velocity: {x: 0, y: 0}
-  maxAcceleration: 5
-  maxXVelocity: 60
+  maxAcceleration: 10
+  maxXVelocity: 80
   distance: 0
   acceleration: 1
   jumpVelocity: 80
@@ -6840,12 +6840,17 @@ MonoBehaviour:
   holdJumpTimer: 0
   jumpGroundThreshold: 1
   isDead: 0
+  isPowerUp: 0
+  powerupTimer: 0
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
   obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  powerupLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!4 &1479026489
 Transform:
   m_ObjectHideFlags: 0
@@ -6878,8 +6883,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1531672938}
   bulletPrefab: {fileID: 6099080037972814729, guid: cfb8cf13197864887beb1c0605319390, type: 3}
+  lifeTime: 0.2
   callGamePause: 0
+  coolDown: 0.2
   gunSoundEffect: {fileID: 1479026492}
+
 --- !u!114 &1479026491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8491,9 +8499,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854994647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2089648, y: 2.295, z: 1}
+  m_LocalScale: {x: 2.2089646, y: 2.2950003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1493022933}
@@ -8501,7 +8509,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: 181}
+  m_AnchoredPosition: {x: -6, y: 181.00006}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1854994649
@@ -8690,7 +8698,7 @@ GameObject:
   - component: {fileID: 1902180128}
   m_Layer: 5
   m_Name: Heart1
-  m_TagString: Untagged
+  m_TagString: Heart1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8960,6 +8968,7 @@ MonoBehaviour:
   groundHeight: 0
   groundRight: 0
   screenRight: 0
+  elixir: {fileID: 5328089043228197914, guid: b5b653499c64ba54b9d8ee74b32ca333, type: 3}
   boxTemplate: {fileID: 289230252885036059, guid: bd7930b9214e04e46aa97759770515ac, type: 3}
   boxTemplate2: {fileID: 2397812022197003509, guid: 5aca2a404c1483d4c83f770bc1c20155, type: 3}
   boxTemplate3: {fileID: 1692889166466388914, guid: d62582a46da136843a0996c6395ce2fe, type: 3}
