@@ -19,6 +19,7 @@ public class Ground : MonoBehaviour
 
     bool didGenerateGround = false;
 
+    public PowerUp elixir;
     public Obstacle boxTemplate;
     public Obstacle boxTemplate2;
     public Obstacle boxTemplate3;
@@ -117,7 +118,7 @@ public class Ground : MonoBehaviour
         float t2 = Mathf.Sqrt((2.0f * (maxY - actualY) / -player.gravity));
         float totalTime = t1 + t2;
         float maxX = totalTime * player.velocity.x;
-        maxX *= 0.5f; //Make it a little easy for the player
+        maxX *= 0.35f; //Make it a little easy for the player
         maxX += groundRight;
         float minX = screenRight + 5;
         float actualX = Random.Range(minX, maxX);
@@ -133,37 +134,43 @@ public class Ground : MonoBehaviour
 
         /* GENERATE THE ZOMBIES */
         //Generate random position of the zombie
-        float y = goGround.groundHeight;
-        float halfWidth = goCollider.size.x / 2 - 1;
-        float left = go.transform.position.x - halfWidth;
-        float right = go.transform.position.x + halfWidth;
-        float x = Random.Range(left, right);
         
         //Create zombie
-        int obstacleNum = Random.Range(1, 2);
-        int selectZombie = Random.Range(0,4);
+        int obstacleNum = Random.Range(1,3);
         for (int i=0; i < obstacleNum; i++)
         {
-            if (selectZombie == 0) {
+            float y = goGround.groundHeight;
+            float halfWidth = (goCollider.size.x / 2) - 1;
+            float left = go.transform.position.x - halfWidth;
+            float right = go.transform.position.x + halfWidth;
+            float x = Random.Range(left, right);
+            int randomVal = Random.Range(0,5);
+            if (randomVal == 0) {
                 GameObject box = Instantiate(boxTemplate.gameObject);
                 Vector2 boxPos = new Vector2(x, y);
                 box.transform.position = boxPos;
             }
-            if (selectZombie == 1) {
+            else if (randomVal == 1) {
                 GameObject box = Instantiate(boxTemplate2.gameObject);
                 Vector2 boxPos = new Vector2(x, y);
                 box.transform.position = boxPos;
             }            
-            if (selectZombie == 2) {
+            else if (randomVal == 2) {
                 GameObject box = Instantiate(boxTemplate3.gameObject);
                 Vector2 boxPos = new Vector2(x, y);
                 box.transform.position = boxPos;
             }
-            if (selectZombie == 3) {
+            else if (randomVal == 3) {
                 GameObject box = Instantiate(boxTemplate4.gameObject);
                 Vector2 boxPos = new Vector2(x, y);
                 box.transform.position = boxPos;
-            }            
+            }
+            else if (randomVal == 4) {
+                GameObject box = Instantiate(elixir.gameObject);
+                Vector2 boxPos = new Vector2(x, y);
+                box.transform.position = boxPos;
+            }
+                        
         }
     }
 
