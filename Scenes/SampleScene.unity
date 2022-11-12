@@ -6693,7 +6693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75a2f45daa8c26f40bb578495fc765c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeScript: {fileID: 0}
+  lifeScript: {fileID: 1479026491}
   gravity: -400
   velocity: {x: 0, y: 0}
   maxAcceleration: 5
@@ -6747,7 +6747,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1531672938}
   bulletPrefab: {fileID: 6099080037972814729, guid: cfb8cf13197864887beb1c0605319390, type: 3}
+  lifeTime: 0.2
   callGamePause: 0
+  coolDown: 0.2
 --- !u!114 &1479026491
 MonoBehaviour:
   m_ObjectHideFlags: 0
