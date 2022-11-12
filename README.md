@@ -1,4 +1,3 @@
-# Assets for Zombie-Runner
+# Assets for Zombie-Runner Game
 
-## Play the game at:
-https://aslka126.itch.io/zombie-run-2
+## Play @ https://aslka126.itch.io/zombie-run-2
