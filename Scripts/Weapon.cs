@@ -10,8 +10,11 @@ public class Weapon : MonoBehaviour
     public float lifeTime;
     public bool callGamePause;
     public float coolDown = 0.2f;
-
     float _nextFireTime = 0f;
+
+
+    [SerializeField] private AudioSource gunSoundEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.F) && Time.time > _nextFireTime && !callGamePause)
         {
             _nextFireTime = Time.time + coolDown;
+            gunSoundEffect.Play();
             Shoot();
         }
     }

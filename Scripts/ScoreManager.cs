@@ -24,7 +24,13 @@ public class ScoreManager : MonoBehaviour
             score += 50 * Time.deltaTime;
             scoreText.text = ((int)score).ToString();
         }
-        highScoreText.text = highScore.ToString();
+        
+        //highScoreText.text = highScore.ToString();
+        if (highScoreText != null)
+        {
+            highScoreText.text = highScore.ToString();
+        }
+        
         if(score > highScore)
         {
             PlayerPrefs.SetFloat("Highscore", Mathf.FloorToInt(score));
