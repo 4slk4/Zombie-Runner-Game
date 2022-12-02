@@ -20,7 +20,7 @@ public class LifeSystem : MonoBehaviour
     {
         life -= d;
         Destroy(hearts[life].gameObject);
-        if (life == 0)
+        if (life == -1)
         {
             player.isDead = true;
         }
