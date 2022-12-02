@@ -265,9 +265,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            int life = lifeScript.life;
-        
-            if (life > -1)
+            if (lifeScript.life > 0)
             {
                 lifeScript.TakeDamage(1);
                 velocity.x *= 0.7f; //Slow down when hit a zombie

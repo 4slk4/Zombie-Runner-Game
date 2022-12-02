@@ -5,7 +5,6 @@ using UnityEngine;
 public class LifeSystem : MonoBehaviour
 {
     public int life;
-    Player player;
     public GameObject[] hearts;
 
        
@@ -20,9 +19,5 @@ public class LifeSystem : MonoBehaviour
     {
         life -= d;
         Destroy(hearts[life].gameObject);
-        if (life == -1)
-        {
-            player.isDead = true;
-        }
     }
 }
