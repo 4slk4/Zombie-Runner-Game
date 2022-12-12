@@ -19,8 +19,8 @@
 
 3. Open Unity Editor, navigate to File > Build and Run and select WebGL
 
-# Authors:
-Khang Ta
-Sumeet Singh
-Khang Truong
-Amritpal Sidhu
+## Authors:
+-Khang Ta
+-Sumeet Singh
+-Khang Truong
+-Amritpal Sidhu
