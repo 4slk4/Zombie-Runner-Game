@@ -17,10 +17,6 @@
 
 ```git clone https://github.com/4slk4/Assets.git ```
 
-3. Open Unity Editor, navigate to File > Build and Run and select WebGL
+3. Open Unity Editor, navigate to File > Build and Run and select WebGL.
 
-## Authors:
-- Khang Ta
-- Sumeet Singh
-- Khang Truong
-- Amritpal Sidhu
+4. Click Build and enjoy!
